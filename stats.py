@@ -3,8 +3,10 @@ def get_word_count(path_to_file):
             file_contents = f.read()
             x = file_contents.split()
             num_words = len(x)
-        print(f"{num_words} words found in the document")  
+        #print(f"{num_words} words found in the document")
+        return num_words  
 get_word_count("books/frankenstein.txt")
+
 
 def get_char_count(path_to_file):    
     char_list = []
@@ -21,5 +23,13 @@ def get_char_count(path_to_file):
                 char_count[letter] += 1
             else:
                 char_count[letter] = 1
-    print(char_count)
+    return(char_count)
 get_char_count("books/frankenstein.txt")
+
+
+def get_sort_list(char_count):
+    char_count = get_char_count("books/frankenstein.txt")
+    sort_by_quantity = dict(sorted(char_count.items(), reverse=True, key=lambda item: item[1]))
+    return sort_by_quantity
+
+get_sort_list(get_char_count)
